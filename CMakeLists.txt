@@ -40,7 +40,7 @@ if(CMAKE_SYSTEM_NAME MATCHES "Android")
 # is Darwin.
 elseif(CMAKE_SYSTEM_NAME MATCHES "Darwin")
   set(PCRE2_TARGET --target pcre2-8-static)
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -target x86_64-apple-ios-macabi")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -target x86_64-apple-tvos")
   set(
     EXTRA_BUILD_ARGS
     -DCMAKE_C_FLAGS=${CMAKE_C_FLAGS}
@@ -71,10 +71,10 @@ execute_process(
     ${EXTRA_BUILD_ARGS}
 
   # TODO: This is a handy option, but requires CMake >= 3.15
-  # COMMAND_ECHO STDOUT
+  COMMAND_ECHO STDOUT
 
   # TODO: This is a useful argument, but requires CMake >= 3.19
-  # COMMAND_ERROR_IS_FATAL ANY
+  COMMAND_ERROR_IS_FATAL ANY
 )
 
 execute_process(
