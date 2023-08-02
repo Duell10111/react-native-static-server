@@ -46,7 +46,7 @@ elseif(CMAKE_SYSTEM_NAME MATCHES "Darwin")
     -DCMAKE_C_FLAGS=${CMAKE_C_FLAGS}
     -DCMAKE_OSX_ARCHITECTURES=${ESCAPED_ARCHS}
   )
-elseif(CMAKE_SYSTEM_NAME MATCHES "iOS")
+elseif(CMAKE_SYSTEM_NAME MATCHES "iOS|tvOS")
   set(
     EXTRA_BUILD_ARGS
     -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}
@@ -84,7 +84,7 @@ execute_process(
 )
 
 if(
-  NOT CMAKE_SYSTEM_NAME MATCHES "iOS"
+  NOT CMAKE_SYSTEM_NAME MATCHES "iOS|tvOS"
 
   # TODO: We wanna say "and not Mac Catalyst build", for which the current
   # condition is not specific enough, but will do for now, as Mac Catalyst
